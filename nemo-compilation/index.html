@@ -1,0 +1,1152 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Andrew Styles">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="A guide to compiling NEMO 4.0 on NEXCS.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://afstyles.github.io/nemo-compilation/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://afstyles.github.io/nemo-compilation/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@AndrewFStyles">
+  <meta property="twitter:creator" content="@AndrewFStyles">
+  
+  <meta property="og:site_name" content="Andrew Styles">
+  <meta property="og:url" content="https://afstyles.github.io/nemo-compilation/">
+  <meta property="og:title" content="Compiling NEMO 4.0 on NEXCS | Andrew Styles">
+  <meta property="og:description" content="A guide to compiling NEMO 4.0 on NEXCS."><meta property="og:image" content="https://afstyles.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://afstyles.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-05-28T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-05-28T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Compiling NEMO 4.0 on NEXCS | Andrew Styles</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Andrew Styles</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Andrew Styles</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/nemo-compilation/"><span>NEMO compilation</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Compiling NEMO 4.0 on NEXCS</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>These are my personal notes on how to set up and compile NEMO 4.0 on NEXCS.</p>
+<p>NEXCS is the NERC partition of the Met Office Cray XC40 supercomputer and has a similar infrastructure to Monsoon2.</p>
+<p>When compiling NEMO I could not find any guide for this particular system but used the following excellent guides for inspiration:</p>
+<ul>
+<li>
+<p>
+<a href="https://nemo-related.readthedocs.io/en/latest/compilation_notes/nemo40.html" target="_blank" rel="noopener">Julian Mak&rsquo;s</a> guide to compiling NEMO 4.0 on local machines and Oxford ARC.</p>
+</li>
+<li>
+<p>
+<a href="http://christopherbull.com.au/nemo/nemo-wed12-01/" target="_blank" rel="noopener">Christopher Bull&rsquo;s</a> guide for compiling NEMO on ARCHER</p>
+</li>
+</ul>
+<p>As these guides were so helpful, I feel it is only fair to make a similar contribution.</p>
+<h2 id="step-1---loading-modules">Step 1 - Loading modules</h2>
+<p>Once you are logged on to the Met Office lander, connect to NEXCS using</p>
+<pre><code class="language-shell">ssh xcs-c
+</code></pre>
+<p>On logging in you need to load the correct compilers and libraries. You will not be able to compile XIOS or NEMO without loading the correct modules. First load the netcdf and hdf5 libraries.</p>
+<pre><code class="language-shell">module load cray-netcdf-hdf5parallel/4.4.1
+module load cray-hdf5-parallel/1.10.0
+</code></pre>
+<p>Switch to a more recent version of mpich.</p>
+<pre><code class="language-shell">module swap cray-mpich/7.0.4 cray-mpich/7.3.1
+</code></pre>
+<p>Finally switch from the Cray environment to the GNU environment</p>
+<pre><code class="language-shell">module swap PrgEnv-cray/5.2.82 PrgEnv-gnu/5.2.82
+</code></pre>
+<p>It will also be useful to load an editor</p>
+<pre><code class="language-shell">module load nano
+</code></pre>
+<hr>
+<p><strong>Note:</strong> When you log in to NEXCS a set of essential modules are loaded by default. Do not use <code>module purge</code> before loading the above modules.</p>
+<hr>
+<p>You loaded modules should look like the following:</p>
+<pre><code class="language-shell">user@xcslc0:~&gt; module list
+  1) moose-client-wrapper                   9) craype-network-aries                  17) cray-hdf5-parallel/1.10.0             25) dvs/2.5_0.9.0-1.0502.2188.1.116.ari
+  2) python/v2.7.9                         10) gcc/4.9.1                             18) cray-libsci/13.0.1                    26) alps/5.2.4-2.0502.9774.31.11.ari
+  3) metoffice/tempdir                     11) craype/2.2.1                          19) udreg/2.3.2-1.0502.10518.2.17.ari     27) rca/1.0.0-2.0502.60530.1.62.ari
+  4) metoffice/userenv                     12) craype-haswell                        20) ugni/6.0-1.0502.10863.8.29.ari        28) atp/1.7.5
+  5) subversion-1.8/1.8.19                 13) cray-mpich/7.3.1                      21) pmi/5.0.5-1.0000.10300.134.8.ari      29) PrgEnv-gnu/5.2.82
+  6) modules/3.2.10.5                      14) pbs/18.2.5.20190913061152             22) dmapp/7.0.1-1.0502.11080.8.76.ari
+  7) eswrap/1.3.3-1.020200.1280.0          15) nano/2.8.6                            23) gni-headers/4.0-1.0502.10859.7.8.ari
+  8) switch/1.0-1.0502.60522.1.61.ari      16) cray-netcdf-hdf5parallel/4.4.1        24) xpmem/0.1-2.0502.64982.5.3.ari
+</code></pre>
+<h2 id="step-2---xios-25">Step 2 - XIOS 2.5</h2>
+<p>XIOS controls the Input/Output for NEMO and needs to be compiled first. For NEMO 4.0 I use XIOS 2.5 but the method is very similar for other versions.</p>
+<p>First navigate to the data directory on NEXCS and make a folder for XIOS</p>
+<pre><code class="language-shell">cd $DATADIR
+mkdir XIOS
+</code></pre>
+<p>Inside the folder download XIOS 2.5</p>
+<pre><code class="language-shell">cd XIOS
+svn checkout -r 1566 http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios-2.5 xios-2.5
+</code></pre>
+<p>We need to make sure XIOS is looking in the right place for the modules loaded in Step 1. We copy and rename the following files in the arch folder</p>
+<pre><code class="language-shell">cd xios-2.5/arch/ 
+cp arch-GCC_LINUX.env arch-GCC_NEXCS.env
+cp arch-GCC_LINUX.fcm arch-GCC_NEXCS.fcm 
+cp arch-GCC_LINUX.path arch-GCC_NEXCS.path
+</code></pre>
+<p>Then edit the files so they look like the following</p>
+<pre><code class="language-shell">#arch-GCC_NEXCS.env
+export HDF5_INC_DIR=/opt/cray/hdf5/1.10.0/GNU/4.9/include
+export HDF5_LIB_DIR=/opt/cray/hdf5/1.10.0/GNU/4.9/lib
+
+export NETCDF_INC_DIR=/opt/cray/netcdf/4.4.1/GNU/4.9/include
+export NETCDF_LIB_DIR=/opt/cray/netcdf/4.4.1/GNU/4.9/lib
+</code></pre>
+<hr>
+<p><strong>Note:</strong> If you are using a different set of modules or worried that this path is wrong. The commands <code>which nc-config</code> and <code>which h5copy</code> will give you a path of the form <code>directory/bin</code>.  The paths used above should then be <code>directory/GNU/4.9/include</code> and similar for <code>lib</code></p>
+<hr>
+<pre><code class="language-shell">#arch-GCC_NEXCS.fcm
+################################################################################
+################### Projet XIOS ###################
+################################################################################
+
+%CCOMPILER cc
+%FCOMPILER ftn
+%LINKER CC
+
+%BASE_CFLAGS -ansi -w
+%PROD_CFLAGS -O3 -DBOOST_DISABLE_ASSERTS
+%DEV_CFLAGS -g -O2
+%DEBUG_CFLAGS -g
+
+%BASE_FFLAGS -D__NONE__
+%PROD_FFLAGS -O3
+%DEV_FFLAGS -g -O2
+%DEBUG_FFLAGS -g
+
+%BASE_INC -D__NONE__
+%BASE_LD -lstdc++
+
+%CPP cpp
+%FPP cpp -P
+%MAKE gmake
+</code></pre>
+<hr>
+<pre><code class="language-shell">#arch-GCC_NEXCS.path
+NETCDF_INCDIR=&quot;-I $NETCDF_INC_DIR&quot;
+NETCDF_LIBDIR=&quot;-Wl,'--allow-multiple-definition' -L$NETCDF_LIB_DIR&quot;
+NETCDF_LIB=&quot;-lnetcdff -lnetcdf&quot;
+
+MPI_INCDIR=&quot;&quot;
+MPI_LIBDIR=&quot;&quot;
+MPI_LIB=&quot;&quot;
+
+HDF5_INCDIR=&quot;-I $HDF5_INC_DIR&quot;
+HDF5_LIBDIR=&quot;-L $HDF5_LIB_DIR&quot;
+HDF5_LIB=&quot;-lhdf5_hl -lhdf5 -lhdf5 -lz&quot;
+</code></pre>
+<hr>
+<p>Then you need to edit <code>bld.cfg</code> in <code>xios-2.5/</code></p>
+<pre><code class="language-shell">cd $DATADIR/XIOS/xios-2.5
+</code></pre>
+<p>and change all occurrences of <code>src_netcdf</code> to <code>src_netcdf4</code> (two in total)</p>
+<p>You are now ready to compile XIOS. In <code>xios-2.5/</code></p>
+<pre><code class="language-shell">./make_xios --full --prod --arch GCC_NEXCS -j2
+</code></pre>
+<p>If this build is successful then XIOS is ready to use. If not,  check over the arch files and make sure the flags are correct and in the right order. Also make sure you have the correct modules loaded. Getting XIOS to compile is by far the most difficult part of the process.</p>
+<h2 id="step-3----nemo-40">Step 3  - NEMO 4.0</h2>
+<p>Now we have XIOS ready to go we can start working on NEMO 4.0.</p>
+<p>Go back to the data directory  and create a new folder for NEMO</p>
+<pre><code class="language-shell">cd $DATADIR
+mkdir NEMO
+</code></pre>
+<p>Then download NEMO 4.0 in the folder.</p>
+<pre><code class="language-shell">cd NEMO
+svn checkout -r 9925 http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk nemo4.0-9925
+</code></pre>
+<p>Now we need to copy and update the arch files for NEMO like we did in XIOS.</p>
+<pre><code class="language-shell">cd nemo4.0-9925/arch/
+cp arch-linux_ifort.fcm arch-linux_NEXCS.fcm
+</code></pre>
+<p>The file <code>arch-linux_NEXCS.fcm</code> needs to look like</p>
+<pre><code class="language-shell">#arch-linux_NEXCS.fcm
+
+%NCDF_HOME           /opt/cray/netcdf/4.4.1/GNU/4.9
+%HDF5_HOME           /opt/cray/hdf5/1.10.0/GNU/4.9
+%XIOS_HOME           /projects/nexcs-n02/user/XIOS/xios-2.5
+
+%NCDF_INC            -I%NCDF_HOME/include -I%HDF5_HOME/include
+%NCDF_LIB            -L%NCDF_HOME/lib -lnetcdf -lnetcdff -lstdc++
+%XIOS_INC            -I%XIOS_HOME/inc
+%XIOS_LIB            -L%XIOS_HOME/lib -lxios -lstdc++
+
+%CPP                 cpp
+%FC                  ftn
+%FCFLAGS             -fdefault-real-8 -O3 -funroll-all-loops -fcray-pointer -cpp -ffree-line-length-none
+%FFLAGS              %FCFLAGS
+%LD                  %FC                                                                                                                                                                               %FPPFLAGS            -P -C -traditional
+%LDFLAGS
+%AR                  ar
+%ARFLAGS             -rs
+%MK                  make
+%USER_INC            %XIOS_INC %NCDF_INC
+%USER_LIB            %XIOS_LIB %NCDF_LIB
+
+%CC                  cc
+</code></pre>
+<h2 id="step-4---compiling-the-gyre_pisces-configuration">Step 4 - Compiling the GYRE_PISCES configuration</h2>
+<p>Now we need a configuration to compile. In this example I use GYRE_PISCES which is a reference configuration in NEMO as it is a relatively simple configuration. Other reference configurations are listed 
+<a href="https://forge.ipsl.jussieu.fr/nemo/chrome/site/doc/NEMO/guide/html/configurations.html" target="_blank" rel="noopener">here</a> and the process will be similar.</p>
+<p>Copy the reference configuration you like to use by doing the following.</p>
+<pre><code class="language-shell">cd $DATADIR/NEMO/nemo4.0-9925/cfgs
+mkdir GYRE_testing
+rsync -arv GYRE_PISCES/* GYRE_testing
+</code></pre>
+<p>Then go into <code>GYRE_testing</code>, rename the <code>cpp_GYRE_PISCES.fcm</code> file.</p>
+<pre><code class="language-shell">cd GYRE_testing
+mv cpp_GYRE_PISCES.fcm cpp_GYRE_testing.fcm
+</code></pre>
+<p>Then edit the same file and replace <code>key_top</code> with <code>key_nosignedzero</code>.</p>
+<hr>
+<p>In <code>cfgs/</code> edit the file <code>ref_cfgs.txt</code> and add your configuration to the bottom of the list. For this example the file looks like.</p>
+<pre><code class="language-shell">AGRIF_DEMO OCE ICE NST
+AMM12 OCE
+C1D_PAPA OCE
+GYRE_BFM OCE TOP
+GYRE_PISCES OCE TOP
+ORCA2_OFF_PISCES OCE TOP OFF
+ORCA2_OFF_TRC OCE TOP OFF
+ORCA2_SAS_ICE OCE ICE NST SAS
+ORCA2_ICE_PISCES OCE TOP ICE NST
+SPITZ12 OCE ICE
+GYRE_testing OCE TOP
+</code></pre>
+<hr>
+<p><strong>Note:</strong> Make sure the OCE/TOP/&hellip; flags match the reference configuration you are using</p>
+<hr>
+<p>You are now ready to <strong>compile nemo</strong>. Make sure you have all the modules in Step 1 loaded. Go back to the base directory and do the following</p>
+<pre><code class="language-shell">cd $DATADIR/NEMO/nemo4.0-9925
+./makenemo -j2 -r GYRE_testing -m linux_NEXCS
+</code></pre>
+<p>If all has gone well you have successfully compiled NEMO!</p>
+<h2 id="step-5---using-nemo-on-nexcs">Step 5 - Using NEMO on NEXCS</h2>
+<p>Now that you have compiled NEMO, you probably want to run it.</p>
+<p>NEMO runs in parallel and will output a data file for each thread used. Therefore we need the <code>REBUILD_NEMO</code> tool to recombine the outputs into a single file.</p>
+<p>To do this go to the tools folder and execute the following command:</p>
+<pre><code class="language-shell">cd $DATADIR/NEMO/nemo4.0-9925/tools
+./maketools -n REBUILD_NEMO -m linux_NEXCS
+</code></pre>
+<hr>
+<p><strong>Note:</strong> If you get an error about <code>iargc_</code> and/or <code>getarg</code> not being external variables then go to the following file <code>tools/REBUILD_NEMO/src/rebuild_nemo.F90</code> and comment out these two lines</p>
+<pre><code class="language-shell">INTEGER, EXTERNAL :: iargc
+ ...
+ external :: getarg
+</code></pre>
+<p>These are not external variables in Fortran 90.</p>
+<hr>
+<p>Now go back to your configuration and create a symbolic link to <code>xios_server.exe</code></p>
+<pre><code class="language-shell">cd $DATADIR/NEMO/nemo4.0-9925/cfgs/GYRE_testing/EXP00
+ln -s $DATADIR/XIOS/xios-2.5/bin/xios_server.exe .
+</code></pre>
+<p>Also modify <code>iodef.xml</code> and set <code>using_server</code> to <code>true</code></p>
+<pre><code class="language-shell">&lt;variable id=&quot;using_server&quot;              type=&quot;bool&quot;&gt;true&lt;/variable&gt;
+</code></pre>
+<p>Make an <code>OUTPUTS/</code> and <code>RESTARTS/</code> directory in <code>EXP00</code></p>
+<pre><code class="language-shell">mkdir OUTPUTS RESTARTS
+</code></pre>
+<p>You also need to add a shell script for post processing to <code>EXP00</code>. The one I use below is a modified version of 
+<a href="https://nemo-related.readthedocs.io/en/latest/compilation_notes/Oxford_ARC.html" target="_blank" rel="noopener">Julian Mak&rsquo;s post processing script</a>. It is too long to show on this page but you can find it 
+<a href="https://github.com/afstyles/nemo4.0-NEXCS/blob/master/cfgs/GYRE_testing/EXP00/postprocess.sh" target="_blank" rel="noopener">here</a> and it should work for this example. The only values that need changing are <code>NUM_DOM</code>(how many nodes is NEMO using) and <code>NUM_CPU</code> (how many cpus in total).</p>
+<p>To run a job on NEXCS you need to use a submission script like the one below. Yet again this is a modification of 
+<a href="https://nemo-related.readthedocs.io/en/latest/compilation_notes/Oxford_ARC.html" target="_blank" rel="noopener">Julian&rsquo;s submission script</a>.</p>
+<pre><code class="language-shell">#!/bin/bash
+#!
+##subm_script.pbs
+#PBS -q nexcs
+#PBS -A user ##Username
+#PBS -l select=3 ##(Number of nodes running NEMO + Number of nodes running XIOS)
+#PBS -l walltime=00:10:00 ##Maximum runtime
+#PBS -N GYRE_testing ##Name of run in queue
+#PBS -o testing.output ##Name of output file
+#PBS -e testing.error ##Name of error file
+#PBS -j oe
+#PBS -V
+
+cd $DATADIR/NEMO/nemo4.0-9925/cfgs/GYRE_testing/EXP00/
+
+echo &quot; _ __   ___ _ __ ___   ___         &quot;
+echo &quot;| '_ \ / _ \ '_ ' _ \ / _ \        &quot;
+echo &quot;| | | |  __/ | | | | | (_) |       &quot;
+echo &quot;|_| |_|\___|_| |_| |_|\___/  v4.0  &quot;
+
+export OCEANCORES=64 #Number of cores used (32 per node running NEMO) 
+export XIOSCORES=2 #Number of cores to run XIOS (=number of nodes running NEMO)
+
+ulimit -c unlimited
+ulimit -s unlimited
+
+aprun -b -n $XIOSCORES -N 2 ./xios_server.exe : -n $OCEANCORES -N 32 ./nemo
+
+#===============================================================
+# POSTPROCESSING
+#===============================================================
+
+# kills the daisy chain if there are errors
+
+if grep -q 'E R R O R' ocean.output ; then
+
+  echo &quot;E R R O R found, exiting...&quot;
+  echo &quot;  ___ _ __ _ __ ___  _ __  &quot;
+  echo &quot; / _ \ '__| '__/ _ \| '__| &quot;
+  echo &quot;|  __/ |  | | | (_) | |    &quot;
+  echo &quot; \___|_|  |_|  \___/|_|    &quot;
+  echo &quot;check out ocean.output or stdouterr to see what the deal is &quot;
+
+  exit
+else
+  echo &quot;going into postprocessing stage...&quot;
+  # cleans up files, makes restarts, moves files, resubmits this pbs
+
+  bash ./postprocess.sh &gt;&amp; cleanup.log
+  exit
+fi
+</code></pre>
+<p>This script uses two nodes (each with 32 cores) to run NEMO and an additional node to run XIOS.</p>
+<hr>
+<p><strong>Note:</strong> For the postprocessing to work  the number of nodes used for NEMO (not XIOS) must = <code>NUM_DOM</code> and the number of cores for NEMO = <code>NUM_CPU</code></p>
+<hr>
+<p>Submit this script by doing</p>
+<pre><code class="language-shell">qsub subm_script.pbs
+</code></pre>
+<p>Check the status of the submitted job using <code>qstat</code></p>
+<p>If all goes well you should have outputs in the <code>OUTPUTS/</code> folder. If not, check <code>testing.output</code> and <code>ocean.output</code> to see what the issue is.</p>
+<hr>
+<p><strong>Note:</strong> Make sure you have the modules mentioned in Step 1 loaded when submitting</p>
+<hr>
+<p><strong>Note:</strong> If you have an error referring to <code>namberg</code> have a look in <code>namelist_ref</code>and look for a comment character <code>!</code> right next to a variable.</p>
+<pre><code class="language-shell">.true.!comment
+</code></pre>
+<p>If found, add a space.</p>
+<pre><code class="language-shell">.true. !comment
+</code></pre>
+<hr>
+<p>Congratulations, you have successfully compiled and run NEMO!</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://afstyles.github.io/nemo-compilation/&amp;text=Compiling%20NEMO%204.0%20on%20NEXCS" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://afstyles.github.io/nemo-compilation/&amp;t=Compiling%20NEMO%204.0%20on%20NEXCS" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Compiling%20NEMO%204.0%20on%20NEXCS&amp;body=https://afstyles.github.io/nemo-compilation/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://afstyles.github.io/nemo-compilation/&amp;title=Compiling%20NEMO%204.0%20on%20NEXCS" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Compiling%20NEMO%204.0%20on%20NEXCS%20https://afstyles.github.io/nemo-compilation/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://afstyles.github.io/nemo-compilation/&amp;title=Compiling%20NEMO%204.0%20on%20NEXCS" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

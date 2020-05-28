@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Andrew Styles</title>
+    <link>https://afstyles.github.io/</link>
+      <atom:link href="https://afstyles.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <description>Andrew Styles</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://afstyles.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Andrew Styles</title>
+      <link>https://afstyles.github.io/</link>
+    </image>
+    
+    <item>
+      <title>Compiling NEMO 4.0 on NEXCS</title>
+      <link>https://afstyles.github.io/nemo-compilation/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/nemo-compilation/</guid>
+      <description>&lt;p&gt;These are my personal notes on how to set up and compile NEMO 4.0 on NEXCS.&lt;/p&gt;
+&lt;p&gt;NEXCS is the NERC partition of the Met Office Cray XC40 supercomputer and has a similar infrastructure to Monsoon2.&lt;/p&gt;
+&lt;p&gt;When compiling NEMO I could not find any guide for this particular system but used the following excellent guides for inspiration:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://nemo-related.readthedocs.io/en/latest/compilation_notes/nemo40.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Julian Mak&amp;rsquo;s&lt;/a&gt; guide to compiling NEMO 4.0 on local machines and Oxford ARC.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://christopherbull.com.au/nemo/nemo-wed12-01/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Christopher Bull&amp;rsquo;s&lt;/a&gt; guide for compiling NEMO on ARCHER&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As these guides were so helpful, I feel it is only fair to make a similar contribution.&lt;/p&gt;
+&lt;h2 id=&#34;step-1---loading-modules&#34;&gt;Step 1 - Loading modules&lt;/h2&gt;
+&lt;p&gt;Once you are logged on to the Met Office lander, connect to NEXCS using&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;ssh xcs-c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;On logging in you need to load the correct compilers and libraries. You will not be able to compile XIOS or NEMO without loading the correct modules. First load the netcdf and hdf5 libraries.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;module load cray-netcdf-hdf5parallel/4.4.1
+module load cray-hdf5-parallel/1.10.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Switch to a more recent version of mpich.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;module swap cray-mpich/7.0.4 cray-mpich/7.3.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally switch from the Cray environment to the GNU environment&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;module swap PrgEnv-cray/5.2.82 PrgEnv-gnu/5.2.82
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It will also be useful to load an editor&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;module load nano
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; When you log in to NEXCS a set of essential modules are loaded by default. Do not use &lt;code&gt;module purge&lt;/code&gt; before loading the above modules.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;You loaded modules should look like the following:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;user@xcslc0:~&amp;gt; module list
+  1) moose-client-wrapper                   9) craype-network-aries                  17) cray-hdf5-parallel/1.10.0             25) dvs/2.5_0.9.0-1.0502.2188.1.116.ari
+  2) python/v2.7.9                         10) gcc/4.9.1                             18) cray-libsci/13.0.1                    26) alps/5.2.4-2.0502.9774.31.11.ari
+  3) metoffice/tempdir                     11) craype/2.2.1                          19) udreg/2.3.2-1.0502.10518.2.17.ari     27) rca/1.0.0-2.0502.60530.1.62.ari
+  4) metoffice/userenv                     12) craype-haswell                        20) ugni/6.0-1.0502.10863.8.29.ari        28) atp/1.7.5
+  5) subversion-1.8/1.8.19                 13) cray-mpich/7.3.1                      21) pmi/5.0.5-1.0000.10300.134.8.ari      29) PrgEnv-gnu/5.2.82
+  6) modules/3.2.10.5                      14) pbs/18.2.5.20190913061152             22) dmapp/7.0.1-1.0502.11080.8.76.ari
+  7) eswrap/1.3.3-1.020200.1280.0          15) nano/2.8.6                            23) gni-headers/4.0-1.0502.10859.7.8.ari
+  8) switch/1.0-1.0502.60522.1.61.ari      16) cray-netcdf-hdf5parallel/4.4.1        24) xpmem/0.1-2.0502.64982.5.3.ari
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;step-2---xios-25&#34;&gt;Step 2 - XIOS 2.5&lt;/h2&gt;
+&lt;p&gt;XIOS controls the Input/Output for NEMO and needs to be compiled first. For NEMO 4.0 I use XIOS 2.5 but the method is very similar for other versions.&lt;/p&gt;
+&lt;p&gt;First navigate to the data directory on NEXCS and make a folder for XIOS&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd $DATADIR
+mkdir XIOS
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Inside the folder download XIOS 2.5&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd XIOS
+svn checkout -r 1566 http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios-2.5 xios-2.5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We need to make sure XIOS is looking in the right place for the modules loaded in Step 1. We copy and rename the following files in the arch folder&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd xios-2.5/arch/ 
+cp arch-GCC_LINUX.env arch-GCC_NEXCS.env
+cp arch-GCC_LINUX.fcm arch-GCC_NEXCS.fcm 
+cp arch-GCC_LINUX.path arch-GCC_NEXCS.path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then edit the files so they look like the following&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#arch-GCC_NEXCS.env
+export HDF5_INC_DIR=/opt/cray/hdf5/1.10.0/GNU/4.9/include
+export HDF5_LIB_DIR=/opt/cray/hdf5/1.10.0/GNU/4.9/lib
+
+export NETCDF_INC_DIR=/opt/cray/netcdf/4.4.1/GNU/4.9/include
+export NETCDF_LIB_DIR=/opt/cray/netcdf/4.4.1/GNU/4.9/lib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you are using a different set of modules or worried that this path is wrong. The commands &lt;code&gt;which nc-config&lt;/code&gt; and &lt;code&gt;which h5copy&lt;/code&gt; will give you a path of the form &lt;code&gt;directory/bin&lt;/code&gt;.  The paths used above should then be &lt;code&gt;directory/GNU/4.9/include&lt;/code&gt; and similar for &lt;code&gt;lib&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#arch-GCC_NEXCS.fcm
+################################################################################
+################### Projet XIOS ###################
+################################################################################
+
+%CCOMPILER cc
+%FCOMPILER ftn
+%LINKER CC
+
+%BASE_CFLAGS -ansi -w
+%PROD_CFLAGS -O3 -DBOOST_DISABLE_ASSERTS
+%DEV_CFLAGS -g -O2
+%DEBUG_CFLAGS -g
+
+%BASE_FFLAGS -D__NONE__
+%PROD_FFLAGS -O3
+%DEV_FFLAGS -g -O2
+%DEBUG_FFLAGS -g
+
+%BASE_INC -D__NONE__
+%BASE_LD -lstdc++
+
+%CPP cpp
+%FPP cpp -P
+%MAKE gmake
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#arch-GCC_NEXCS.path
+NETCDF_INCDIR=&amp;quot;-I $NETCDF_INC_DIR&amp;quot;
+NETCDF_LIBDIR=&amp;quot;-Wl,&#39;--allow-multiple-definition&#39; -L$NETCDF_LIB_DIR&amp;quot;
+NETCDF_LIB=&amp;quot;-lnetcdff -lnetcdf&amp;quot;
+
+MPI_INCDIR=&amp;quot;&amp;quot;
+MPI_LIBDIR=&amp;quot;&amp;quot;
+MPI_LIB=&amp;quot;&amp;quot;
+
+HDF5_INCDIR=&amp;quot;-I $HDF5_INC_DIR&amp;quot;
+HDF5_LIBDIR=&amp;quot;-L $HDF5_LIB_DIR&amp;quot;
+HDF5_LIB=&amp;quot;-lhdf5_hl -lhdf5 -lhdf5 -lz&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;Then you need to edit &lt;code&gt;bld.cfg&lt;/code&gt; in &lt;code&gt;xios-2.5/&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd $DATADIR/XIOS/xios-2.5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and change all occurrences of &lt;code&gt;src_netcdf&lt;/code&gt; to &lt;code&gt;src_netcdf4&lt;/code&gt; (two in total)&lt;/p&gt;
+&lt;p&gt;You are now ready to compile XIOS. In &lt;code&gt;xios-2.5/&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;./make_xios --full --prod --arch GCC_NEXCS -j2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If this build is successful then XIOS is ready to use. If not,  check over the arch files and make sure the flags are correct and in the right order. Also make sure you have the correct modules loaded. Getting XIOS to compile is by far the most difficult part of the process.&lt;/p&gt;
+&lt;h2 id=&#34;step-3----nemo-40&#34;&gt;Step 3  - NEMO 4.0&lt;/h2&gt;
+&lt;p&gt;Now we have XIOS ready to go we can start working on NEMO 4.0.&lt;/p&gt;
+&lt;p&gt;Go back to the data directory  and create a new folder for NEMO&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd $DATADIR
+mkdir NEMO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then download NEMO 4.0 in the folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd NEMO
+svn checkout -r 9925 http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk nemo4.0-9925
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we need to copy and update the arch files for NEMO like we did in XIOS.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd nemo4.0-9925/arch/
+cp arch-linux_ifort.fcm arch-linux_NEXCS.fcm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The file &lt;code&gt;arch-linux_NEXCS.fcm&lt;/code&gt; needs to look like&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#arch-linux_NEXCS.fcm
+
+%NCDF_HOME           /opt/cray/netcdf/4.4.1/GNU/4.9
+%HDF5_HOME           /opt/cray/hdf5/1.10.0/GNU/4.9
+%XIOS_HOME           /projects/nexcs-n02/user/XIOS/xios-2.5
+
+%NCDF_INC            -I%NCDF_HOME/include -I%HDF5_HOME/include
+%NCDF_LIB            -L%NCDF_HOME/lib -lnetcdf -lnetcdff -lstdc++
+%XIOS_INC            -I%XIOS_HOME/inc
+%XIOS_LIB            -L%XIOS_HOME/lib -lxios -lstdc++
+
+%CPP                 cpp
+%FC                  ftn
+%FCFLAGS             -fdefault-real-8 -O3 -funroll-all-loops -fcray-pointer -cpp -ffree-line-length-none
+%FFLAGS              %FCFLAGS
+%LD                  %FC                                                                                                                                                                               %FPPFLAGS            -P -C -traditional
+%LDFLAGS
+%AR                  ar
+%ARFLAGS             -rs
+%MK                  make
+%USER_INC            %XIOS_INC %NCDF_INC
+%USER_LIB            %XIOS_LIB %NCDF_LIB
+
+%CC                  cc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;step-4---compiling-the-gyre_pisces-configuration&#34;&gt;Step 4 - Compiling the GYRE_PISCES configuration&lt;/h2&gt;
+&lt;p&gt;Now we need a configuration to compile. In this example I use GYRE_PISCES which is a reference configuration in NEMO as it is a relatively simple configuration. Other reference configurations are listed 
+&lt;a href=&#34;https://forge.ipsl.jussieu.fr/nemo/chrome/site/doc/NEMO/guide/html/configurations.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; and the process will be similar.&lt;/p&gt;
+&lt;p&gt;Copy the reference configuration you like to use by doing the following.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd $DATADIR/NEMO/nemo4.0-9925/cfgs
+mkdir GYRE_testing
+rsync -arv GYRE_PISCES/* GYRE_testing
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then go into &lt;code&gt;GYRE_testing&lt;/code&gt;, rename the &lt;code&gt;cpp_GYRE_PISCES.fcm&lt;/code&gt; file.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd GYRE_testing
+mv cpp_GYRE_PISCES.fcm cpp_GYRE_testing.fcm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then edit the same file and replace &lt;code&gt;key_top&lt;/code&gt; with &lt;code&gt;key_nosignedzero&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;In &lt;code&gt;cfgs/&lt;/code&gt; edit the file &lt;code&gt;ref_cfgs.txt&lt;/code&gt; and add your configuration to the bottom of the list. For this example the file looks like.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;AGRIF_DEMO OCE ICE NST
+AMM12 OCE
+C1D_PAPA OCE
+GYRE_BFM OCE TOP
+GYRE_PISCES OCE TOP
+ORCA2_OFF_PISCES OCE TOP OFF
+ORCA2_OFF_TRC OCE TOP OFF
+ORCA2_SAS_ICE OCE ICE NST SAS
+ORCA2_ICE_PISCES OCE TOP ICE NST
+SPITZ12 OCE ICE
+GYRE_testing OCE TOP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Make sure the OCE/TOP/&amp;hellip; flags match the reference configuration you are using&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;You are now ready to &lt;strong&gt;compile nemo&lt;/strong&gt;. Make sure you have all the modules in Step 1 loaded. Go back to the base directory and do the following&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd $DATADIR/NEMO/nemo4.0-9925
+./makenemo -j2 -r GYRE_testing -m linux_NEXCS
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If all has gone well you have successfully compiled NEMO!&lt;/p&gt;
+&lt;h2 id=&#34;step-5---using-nemo-on-nexcs&#34;&gt;Step 5 - Using NEMO on NEXCS&lt;/h2&gt;
+&lt;p&gt;Now that you have compiled NEMO, you probably want to run it.&lt;/p&gt;
+&lt;p&gt;NEMO runs in parallel and will output a data file for each thread used. Therefore we need the &lt;code&gt;REBUILD_NEMO&lt;/code&gt; tool to recombine the outputs into a single file.&lt;/p&gt;
+&lt;p&gt;To do this go to the tools folder and execute the following command:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd $DATADIR/NEMO/nemo4.0-9925/tools
+./maketools -n REBUILD_NEMO -m linux_NEXCS
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you get an error about &lt;code&gt;iargc_&lt;/code&gt; and/or &lt;code&gt;getarg&lt;/code&gt; not being external variables then go to the following file &lt;code&gt;tools/REBUILD_NEMO/src/rebuild_nemo.F90&lt;/code&gt; and comment out these two lines&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;INTEGER, EXTERNAL :: iargc
+ ...
+ external :: getarg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These are not external variables in Fortran 90.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Now go back to your configuration and create a symbolic link to &lt;code&gt;xios_server.exe&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd $DATADIR/NEMO/nemo4.0-9925/cfgs/GYRE_testing/EXP00
+ln -s $DATADIR/XIOS/xios-2.5/bin/xios_server.exe .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Also modify &lt;code&gt;iodef.xml&lt;/code&gt; and set &lt;code&gt;using_server&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;&amp;lt;variable id=&amp;quot;using_server&amp;quot;              type=&amp;quot;bool&amp;quot;&amp;gt;true&amp;lt;/variable&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Make an &lt;code&gt;OUTPUTS/&lt;/code&gt; and &lt;code&gt;RESTARTS/&lt;/code&gt; directory in &lt;code&gt;EXP00&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;mkdir OUTPUTS RESTARTS
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You also need to add a shell script for post processing to &lt;code&gt;EXP00&lt;/code&gt;. The one I use below is a modified version of 
+&lt;a href=&#34;https://nemo-related.readthedocs.io/en/latest/compilation_notes/Oxford_ARC.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Julian Mak&amp;rsquo;s post processing script&lt;/a&gt;. It is too long to show on this page but you can find it 
+&lt;a href=&#34;https://github.com/afstyles/nemo4.0-NEXCS/blob/master/cfgs/GYRE_testing/EXP00/postprocess.sh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; and it should work for this example. The only values that need changing are &lt;code&gt;NUM_DOM&lt;/code&gt;(how many nodes is NEMO using) and &lt;code&gt;NUM_CPU&lt;/code&gt; (how many cpus in total).&lt;/p&gt;
+&lt;p&gt;To run a job on NEXCS you need to use a submission script like the one below. Yet again this is a modification of 
+&lt;a href=&#34;https://nemo-related.readthedocs.io/en/latest/compilation_notes/Oxford_ARC.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Julian&amp;rsquo;s submission script&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
+#!
+##subm_script.pbs
+#PBS -q nexcs
+#PBS -A user ##Username
+#PBS -l select=3 ##(Number of nodes running NEMO + Number of nodes running XIOS)
+#PBS -l walltime=00:10:00 ##Maximum runtime
+#PBS -N GYRE_testing ##Name of run in queue
+#PBS -o testing.output ##Name of output file
+#PBS -e testing.error ##Name of error file
+#PBS -j oe
+#PBS -V
+
+cd $DATADIR/NEMO/nemo4.0-9925/cfgs/GYRE_testing/EXP00/
+
+echo &amp;quot; _ __   ___ _ __ ___   ___         &amp;quot;
+echo &amp;quot;| &#39;_ \ / _ \ &#39;_ &#39; _ \ / _ \        &amp;quot;
+echo &amp;quot;| | | |  __/ | | | | | (_) |       &amp;quot;
+echo &amp;quot;|_| |_|\___|_| |_| |_|\___/  v4.0  &amp;quot;
+
+export OCEANCORES=64 #Number of cores used (32 per node running NEMO) 
+export XIOSCORES=2 #Number of cores to run XIOS (=number of nodes running NEMO)
+
+ulimit -c unlimited
+ulimit -s unlimited
+
+aprun -b -n $XIOSCORES -N 2 ./xios_server.exe : -n $OCEANCORES -N 32 ./nemo
+
+#===============================================================
+# POSTPROCESSING
+#===============================================================
+
+# kills the daisy chain if there are errors
+
+if grep -q &#39;E R R O R&#39; ocean.output ; then
+
+  echo &amp;quot;E R R O R found, exiting...&amp;quot;
+  echo &amp;quot;  ___ _ __ _ __ ___  _ __  &amp;quot;
+  echo &amp;quot; / _ \ &#39;__| &#39;__/ _ \| &#39;__| &amp;quot;
+  echo &amp;quot;|  __/ |  | | | (_) | |    &amp;quot;
+  echo &amp;quot; \___|_|  |_|  \___/|_|    &amp;quot;
+  echo &amp;quot;check out ocean.output or stdouterr to see what the deal is &amp;quot;
+
+  exit
+else
+  echo &amp;quot;going into postprocessing stage...&amp;quot;
+  # cleans up files, makes restarts, moves files, resubmits this pbs
+
+  bash ./postprocess.sh &amp;gt;&amp;amp; cleanup.log
+  exit
+fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This script uses two nodes (each with 32 cores) to run NEMO and an additional node to run XIOS.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; For the postprocessing to work  the number of nodes used for NEMO (not XIOS) must = &lt;code&gt;NUM_DOM&lt;/code&gt; and the number of cores for NEMO = &lt;code&gt;NUM_CPU&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Submit this script by doing&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;qsub subm_script.pbs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Check the status of the submitted job using &lt;code&gt;qstat&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If all goes well you should have outputs in the &lt;code&gt;OUTPUTS/&lt;/code&gt; folder. If not, check &lt;code&gt;testing.output&lt;/code&gt; and &lt;code&gt;ocean.output&lt;/code&gt; to see what the issue is.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Make sure you have the modules mentioned in Step 1 loaded when submitting&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you have an error referring to &lt;code&gt;namberg&lt;/code&gt; have a look in &lt;code&gt;namelist_ref&lt;/code&gt;and look for a comment character &lt;code&gt;!&lt;/code&gt; right next to a variable.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;.true.!comment
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If found, add a space.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;.true. !comment
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;Congratulations, you have successfully compiled and run NEMO!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Compiling NEMO on NEXCS</title>
+      <link>https://afstyles.github.io/post/nemo-compilation-post/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/nemo-compilation-post/</guid>
+      <description>&lt;p&gt;Check out my guide to compile NEMO on NEXCS 
+&lt;a href=&#34;https://afstyles.github.io/nemo-compilation/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
