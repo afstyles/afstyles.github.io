@@ -27,10 +27,10 @@
   
     
   
-  <meta name="description" content="A guide to compiling NEMO 4.0 on Monsoon/NEXCS.">
+  <meta name="description" content="A guide to compiling NEMO 4.0 on NEXCS.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://afstyles.github.io/nemo-compilation/">
+  <link rel="alternate" hreflang="en-us" href="https://afstyles.github.io/nemo-compilation-archive/">
 
   
 
@@ -220,7 +220,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://afstyles.github.io/nemo-compilation/">
+  <link rel="canonical" href="https://afstyles.github.io/nemo-compilation-archive/">
 
   
   
@@ -239,15 +239,15 @@
   <meta property="twitter:creator" content="@AndrewFStyles">
   
   <meta property="og:site_name" content="Andrew Styles">
-  <meta property="og:url" content="https://afstyles.github.io/nemo-compilation/">
-  <meta property="og:title" content="Compiling NEMO 4.0.1 on Monsoon/NEXCS | Andrew Styles">
-  <meta property="og:description" content="A guide to compiling NEMO 4.0 on Monsoon/NEXCS."><meta property="og:image" content="https://afstyles.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:url" content="https://afstyles.github.io/nemo-compilation-archive/">
+  <meta property="og:title" content="Compiling NEMO 4.0 on NEXCS | Andrew Styles">
+  <meta property="og:description" content="A guide to compiling NEMO 4.0 on NEXCS."><meta property="og:image" content="https://afstyles.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://afstyles.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-10-28T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2020-05-28T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2020-10-28T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2020-05-28T00:00:00&#43;00:00">
   
 
   
@@ -266,7 +266,7 @@
 
 
 
-  <title>Compiling NEMO 4.0.1 on Monsoon/NEXCS | Andrew Styles</title>
+  <title>Compiling NEMO 4.0 on NEXCS | Andrew Styles</title>
 
 </head>
 
@@ -416,7 +416,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link  active" href="/nemo-compilation/"><span>NEMO compilation</span></a>
+          <a class="nav-link " href="/nemo-compilation/"><span>NEMO compilation</span></a>
         </li>
 
         
@@ -512,7 +512,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Compiling NEMO 4.0.1 on Monsoon/NEXCS</h1>
+  <h1>Compiling NEMO 4.0 on NEXCS</h1>
 
   
 
@@ -564,11 +564,11 @@
 
     <div class="article-style">
       <hr>
-<p><strong>Note:</strong> This guide has been updated to work with NEMO 4.0.1 using Intel compilers.
-If for any reason you want to look at my original guide for an earlier release using GCC compilers click 
-<a href="/nemo-compilation-archive/">here</a></p>
+<p><strong>Note</strong> this guide has been updated 
+<a href="/nemo-compilation/">here</a> to work with a later release of NEMO using intel compilers. This guide still works but I would advise using the more up-to-date guide.</p>
 <hr>
-<p>These are my personal notes on how to set up and compile NEMO 4.0.1 on Monsoon/NEXCS.</p>
+<p>These are my personal notes on how to set up and compile NEMO 4.0 on NEXCS.</p>
+<p>NEXCS is the NERC partition of the Met Office Cray XC40 supercomputer and has a similar infrastructure to Monsoon2.</p>
 <p>When compiling NEMO I could not find any guide for this particular system but used the following excellent guides for inspiration:</p>
 <ul>
 <li>
@@ -581,18 +581,19 @@ If for any reason you want to look at my original guide for an earlier release u
 </li>
 </ul>
 <p>As these guides were so helpful, I feel it is only fair to make a similar contribution.</p>
-<p>I must also give a huge thanks to Dr. Andrew Coward from the National Oceanography Centre who has helped me to update this guide.</p>
 <h2 id="step-1---loading-modules">Step 1 - Loading modules</h2>
 <p>Once you are logged on to the Met Office lander, connect to NEXCS using</p>
 <pre><code class="language-shell">ssh xcs-c
 </code></pre>
-<p>On logging in you need to load the correct compilers and libraries. You will not be able to compile XIOS or NEMO without loading the correct modules. You can do this by running the following shell script.</p>
-<pre><code class="language-shell">#/bin/bash
-#!
-module swap PrgEnv-cray/5.2.82 PrgEnv-intel/5.2.82
-module swap intel/15.0.0.090 intel/18.0.5.274
-module load cray-hdf5-parallel/1.10.2.0
-module load cray-netcdf-hdf5parallel/4.6.1.3
+<p>On logging in you need to load the correct compilers and libraries. You will not be able to compile XIOS or NEMO without loading the correct modules. First load the netcdf and hdf5 libraries.</p>
+<pre><code class="language-shell">module load cray-netcdf-hdf5parallel/4.4.1
+module load cray-hdf5-parallel/1.10.0
+</code></pre>
+<p>Switch to a more recent version of mpich.</p>
+<pre><code class="language-shell">module swap cray-mpich/7.0.4 cray-mpich/7.3.1
+</code></pre>
+<p>Finally switch from the Cray environment to the GNU environment</p>
+<pre><code class="language-shell">module swap PrgEnv-cray/5.2.82 PrgEnv-gnu/5.2.82
 </code></pre>
 <p>It will also be useful to load an editor</p>
 <pre><code class="language-shell">module load nano
@@ -600,17 +601,16 @@ module load cray-netcdf-hdf5parallel/4.6.1.3
 <hr>
 <p><strong>Note:</strong> When you log in to NEXCS a set of essential modules are loaded by default. Do not use <code>module purge</code> before loading the above modules.</p>
 <hr>
-<p>Your loaded modules should look like the following:</p>
-<pre><code class="language-shell">astyles@xcslc0:~&gt; module list
-Currently Loaded Modulefiles:
-  1) moose-client-wrapper                   9) craype-network-aries                  17) cray-libsci/13.0.1                    25) alps/5.2.4-2.0502.9774.31.11.ari
-  2) python/v2.7.9                         10) gcc/4.8.1                             18) udreg/2.3.2-1.0502.10518.2.17.ari     26) rca/1.0.0-2.0502.60530.1.62.ari
-  3) metoffice/tempdir                     11) intel/18.0.5.274                      19) ugni/6.0-1.0502.10863.8.29.ari        27) atp/1.7.5
-  4) metoffice/userenv                     12) craype/2.2.1                          20) pmi/5.0.5-1.0000.10300.134.8.ari      28) PrgEnv-intel/5.2.82
-  5) subversion-1.8/1.8.19                 13) craype-haswell                        21) dmapp/7.0.1-1.0502.11080.8.76.ari     29) cray-hdf5-parallel/1.10.2.0
-  6) modules/3.2.10.5                      14) cray-mpich/7.0.4                      22) gni-headers/4.0-1.0502.10859.7.8.ari  30) cray-netcdf-hdf5parallel/4.6.1.3
-  7) eswrap/1.3.3-1.020200.1280.0          15) pbs/18.2.5.20190913061152             23) xpmem/0.1-2.0502.64982.5.3.ari
-  8) switch/1.0-1.0502.60522.1.61.ari      16) nano/2.8.6                            24) dvs/2.5_0.9.0-1.0502.2188.1.116.ari
+<p>You loaded modules should look like the following:</p>
+<pre><code class="language-shell">user@xcslc0:~&gt; module list
+  1) moose-client-wrapper                   9) craype-network-aries                  17) cray-hdf5-parallel/1.10.0             25) dvs/2.5_0.9.0-1.0502.2188.1.116.ari
+  2) python/v2.7.9                         10) gcc/4.9.1                             18) cray-libsci/13.0.1                    26) alps/5.2.4-2.0502.9774.31.11.ari
+  3) metoffice/tempdir                     11) craype/2.2.1                          19) udreg/2.3.2-1.0502.10518.2.17.ari     27) rca/1.0.0-2.0502.60530.1.62.ari
+  4) metoffice/userenv                     12) craype-haswell                        20) ugni/6.0-1.0502.10863.8.29.ari        28) atp/1.7.5
+  5) subversion-1.8/1.8.19                 13) cray-mpich/7.3.1                      21) pmi/5.0.5-1.0000.10300.134.8.ari      29) PrgEnv-gnu/5.2.82
+  6) modules/3.2.10.5                      14) pbs/18.2.5.20190913061152             22) dmapp/7.0.1-1.0502.11080.8.76.ari
+  7) eswrap/1.3.3-1.020200.1280.0          15) nano/2.8.6                            23) gni-headers/4.0-1.0502.10859.7.8.ari
+  8) switch/1.0-1.0502.60522.1.61.ari      16) cray-netcdf-hdf5parallel/4.4.1        24) xpmem/0.1-2.0502.64982.5.3.ari
 </code></pre>
 <h2 id="step-2---xios-25">Step 2 - XIOS 2.5</h2>
 <p>XIOS controls the Input/Output for NEMO and needs to be compiled first. For NEMO 4.0 I use XIOS 2.5 but the method is very similar for other versions.</p>
@@ -624,88 +624,68 @@ svn checkout -r 1566 http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS/branchs/xios
 </code></pre>
 <p>We need to make sure XIOS is looking in the right place for the modules loaded in Step 1. We copy and rename the following files in the arch folder</p>
 <pre><code class="language-shell">cd xios-2.5/arch/ 
-cp arch-XC30_Cray.env arch-XC30_NEXCS.env
-cp arch-XC30_Cray.fcm arch-XC30_NEXCS.fcm 
-cp arch-XC30_Cray.path arch-XC30_NEXCS.path
+cp arch-GCC_LINUX.env arch-GCC_NEXCS.env
+cp arch-GCC_LINUX.fcm arch-GCC_NEXCS.fcm 
+cp arch-GCC_LINUX.path arch-GCC_NEXCS.path
 </code></pre>
 <p>Then edit the files so they look like the following</p>
-<pre><code class="language-shell">#arch-XC30_NEXCS.env
-export HDF5_INC_DIR=${HDF5_DIR}/include
-export HDF5_LIB_DIR=${HDF5_DIR}/lib
+<pre><code class="language-shell">#arch-GCC_NEXCS.env
+export HDF5_INC_DIR=/opt/cray/hdf5/1.10.0/GNU/4.9/include
+export HDF5_LIB_DIR=/opt/cray/hdf5/1.10.0/GNU/4.9/lib
 
-export NETCDF_INC_DIR=${NETCDF_DIR}/include
-export NETCDF_LIB_DIR=${NETCDF_DIR}/lib
+export NETCDF_INC_DIR=/opt/cray/netcdf/4.4.1/GNU/4.9/include
+export NETCDF_LIB_DIR=/opt/cray/netcdf/4.4.1/GNU/4.9/lib
 </code></pre>
 <hr>
 <p><strong>Note:</strong> If you are using a different set of modules or worried that this path is wrong. The commands <code>which nc-config</code> and <code>which h5copy</code> will give you a path of the form <code>directory/bin</code>.  The paths used above should then be <code>directory/GNU/4.9/include</code> and similar for <code>lib</code></p>
 <hr>
-<pre><code class="language-shell">#arch-XC30_NEXCS.fcm
+<pre><code class="language-shell">#arch-GCC_NEXCS.fcm
 ################################################################################
-###################                Projet XIOS               ###################
+################### Projet XIOS ###################
 ################################################################################
 
-# Cray XC build instructions for XIOS/xios-1.0
-# These files have been tested on
-# Archer (XC30), ECMWF (XC30), and the Met Office (XC40) using the Cray PrgEnv.
-# One must also:
-#    module load cray-netcdf-hdf5parallel/4.3.2
-# There is a bug in the CC compiler prior to cce/8.3.7 using -O3 or -O2
-# The workarounds are not ideal:
-# Use -Gfast and put up with VERY large executables
-# Use -O1 and possibly suffer a significant performance loss.
-#
-# Mike Rezny Met Office 23/03/2015
+%CCOMPILER cc
+%FCOMPILER ftn
+%LINKER CC
 
-%CCOMPILER      cc
-%FCOMPILER      ftn
-%LINKER         CC
+%BASE_CFLAGS -ansi -w
+%PROD_CFLAGS -O3 -DBOOST_DISABLE_ASSERTS
+%DEV_CFLAGS -g -O2
+%DEBUG_CFLAGS -g
 
-%BASE_CFLAGS    -DMPICH_SKIP_MPICXX -h msglevel_4 -h zero -h noparse_templates
-%PROD_CFLAGS    -O3 -DBOOST_DISABLE_ASSERTS
-%DEV_CFLAGS     -g -O2
-%DEBUG_CFLAGS   -g
+%BASE_FFLAGS -D__NONE__
+%PROD_FFLAGS -O3
+%DEV_FFLAGS -g -O2
+%DEBUG_FFLAGS -g
 
-%BASE_FFLAGS    -warn all -zero
-%PROD_FFLAGS    -O3 -fp-model precise -warn all -zero
-%DEV_FFLAGS     -g -O2
-%DEBUG_FFLAGS   -g
+%BASE_INC -D__NONE__
+%BASE_LD -lstdc++
 
-%BASE_INC       -D__NONE__
-%BASE_LD        -D__NONE__
-
-%CPP            cpp
-%FPP            cpp -P -CC
-%MAKE           gmake
+%CPP cpp
+%FPP cpp -P
+%MAKE gmake
 </code></pre>
 <hr>
-<pre><code class="language-shell">#arch-XC30_NEXCS.path
+<pre><code class="language-shell">#arch-GCC_NEXCS.path
 NETCDF_INCDIR=&quot;-I $NETCDF_INC_DIR&quot;
-NETCDF_LIBDIR='-Wl,&quot;--allow-multiple-definition&quot; -Wl,&quot;-Bstatic&quot; -L $NETCDF_LIB_DIR'
-NETCDF_LIB=&quot;-lnetcdf -lnetcdff&quot;
+NETCDF_LIBDIR=&quot;-Wl,'--allow-multiple-definition' -L$NETCDF_LIB_DIR&quot;
+NETCDF_LIB=&quot;-lnetcdff -lnetcdf&quot;
 
 MPI_INCDIR=&quot;&quot;
 MPI_LIBDIR=&quot;&quot;
 MPI_LIB=&quot;&quot;
 
-#HDF5_INCDIR=&quot;-I $HDF5_INC_DIR&quot;
+HDF5_INCDIR=&quot;-I $HDF5_INC_DIR&quot;
 HDF5_LIBDIR=&quot;-L $HDF5_LIB_DIR&quot;
-HDF5_LIB=&quot;-lhdf5_hl -lhdf5 -lz&quot;
-
-OASIS_INCDIR=&quot;&quot;
-OASIS_LIBDIR=&quot;&quot;
-OASIS_LIB=&quot;&quot;
-
-#OASIS_INCDIR=&quot;-I$PWD/../../prism/X64/build/lib/psmile.MPI1&quot;
-#OASIS_LIBDIR=&quot;-L$PWD/../../prism/X64/lib&quot;
-#OASIS_LIB=&quot;-lpsmile.MPI1 -lmpp_io&quot;
-
+HDF5_LIB=&quot;-lhdf5_hl -lhdf5 -lhdf5 -lz&quot;
 </code></pre>
+<hr>
 <p>Then you need to edit <code>bld.cfg</code> in <code>xios-2.5/</code></p>
 <pre><code class="language-shell">cd $DATADIR/XIOS/xios-2.5
 </code></pre>
 <p>and change all occurrences of <code>src_netcdf</code> to <code>src_netcdf4</code> (two in total)</p>
 <p>You are now ready to compile XIOS. In <code>xios-2.5/</code></p>
-<pre><code class="language-shell">./make_xios --full --prod --arch XC30_NEXCS -j2
+<pre><code class="language-shell">./make_xios --full --prod --arch GCC_NEXCS -j2
 </code></pre>
 <p>If this build is successful then XIOS is ready to use. If not,  check over the arch files and make sure the flags are correct and in the right order. Also make sure you have the correct modules loaded. Getting XIOS to compile is by far the most difficult part of the process.</p>
 <h2 id="step-3----nemo-40">Step 3  - NEMO 4.0</h2>
@@ -714,51 +694,45 @@ OASIS_LIB=&quot;&quot;
 <pre><code class="language-shell">cd $DATADIR
 mkdir NEMO
 </code></pre>
-<p>Then download NEMO 4.0.1 in the folder.</p>
+<p>Then download NEMO 4.0 in the folder.</p>
 <pre><code class="language-shell">cd NEMO
-svn co https://forge.ipsl.jussieu.fr/nemo/svn/NEMO/releases/release-4.0.1
+svn checkout -r 9925 http://forge.ipsl.jussieu.fr/nemo/svn/NEMO/trunk nemo4.0-9925
 </code></pre>
 <p>Now we need to copy and update the arch files for NEMO like we did in XIOS.</p>
-<pre><code class="language-shell">cd release-4.0.1/arch/
-cp arch-linux_ifort.fcm arch-XC_MONSOON_INTEL.fcm
+<pre><code class="language-shell">cd nemo4.0-9925/arch/
+cp arch-linux_ifort.fcm arch-linux_NEXCS.fcm
 </code></pre>
-<p>The file <code>arch-XC_MONSOON_INTEL.fcm</code> needs to look like</p>
-<pre><code class="language-shell">#arch-XC_MONSOON_INTEL.fcm
-%NCDF_HOME           $NETCDF_DIR
-%HDF5_HOME           $HDF5_DIR
-%XIOS_HOME           $DATADIR/XIOS/xios-2.5
-#OASIS_HOME
+<p>The file <code>arch-linux_NEXCS.fcm</code> needs to look like</p>
+<pre><code class="language-shell">#arch-linux_NEXCS.fcm
+
+%NCDF_HOME           /opt/cray/netcdf/4.4.1/GNU/4.9
+%HDF5_HOME           /opt/cray/hdf5/1.10.0/GNU/4.9
+%XIOS_HOME           /projects/nexcs-n02/user/XIOS/xios-2.5
 
 %NCDF_INC            -I%NCDF_HOME/include -I%HDF5_HOME/include
-%NCDF_LIB            -L%HDF5_HOME/lib -L%NCDF_HOME/lib -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
+%NCDF_LIB            -L%NCDF_HOME/lib -lnetcdf -lnetcdff -lstdc++
 %XIOS_INC            -I%XIOS_HOME/inc
-%XIOS_LIB            -L%XIOS_HOME/lib -lxios
-#OASIS_INC           -I%OASIS_HOME/build/lib/mct -I%OASIS_HOME/build/lib/psmile.MPI1
-#OASIS_LIB           -L%OASIS_HOME/lib -lpsmile.MPI1 -lmct -lmpeu -lscrip
+%XIOS_LIB            -L%XIOS_HOME/lib -lxios -lstdc++
 
 %CPP                 cpp
 %FC                  ftn
-%FCFLAGS             -integer-size 32 -real-size 64 -O3 -fp-model source -zero -fpp -warn all
-%FFLAGS              -integer-size 32 -real-size 64 -O3 -fp-model source -zero -fpp -warn all
-%LD                  CC -Wl,&quot;--allow-multiple-definition&quot;
-%FPPFLAGS            -P -C -traditional
+%FCFLAGS             -fdefault-real-8 -O3 -funroll-all-loops -fcray-pointer -cpp -ffree-line-length-none
+%FFLAGS              %FCFLAGS
+%LD                  %FC                                                                                                                                                                               %FPPFLAGS            -P -C -traditional
 %LDFLAGS
 %AR                  ar
-%ARFLAGS             -rvs
-%MK                  gmake
+%ARFLAGS             -rs
+%MK                  make
 %USER_INC            %XIOS_INC %NCDF_INC
 %USER_LIB            %XIOS_LIB %NCDF_LIB
-#USER_INC            %XIOS_INC %OASIS_INC %NCDF_INC
-##USER_LIB            %XIOS_LIB %OASIS_LIB %NCDF_LIB
 
 %CC                  cc
-%CFLAGS              -O0
 </code></pre>
 <h2 id="step-4---compiling-the-gyre_pisces-configuration">Step 4 - Compiling the GYRE_PISCES configuration</h2>
 <p>Now we need a configuration to compile. In this example I use GYRE_PISCES which is a reference configuration in NEMO as it is a relatively simple configuration. Other reference configurations are listed 
 <a href="https://forge.ipsl.jussieu.fr/nemo/chrome/site/doc/NEMO/guide/html/configurations.html" target="_blank" rel="noopener">here</a> and the process will be similar.</p>
 <p>Copy the reference configuration you like to use by doing the following.</p>
-<pre><code class="language-shell">cd $DATADIR/NEMO/release-4.0.1/cfgs
+<pre><code class="language-shell">cd $DATADIR/NEMO/nemo4.0-9925/cfgs
 mkdir GYRE_testing
 rsync -arv GYRE_PISCES/* GYRE_testing
 </code></pre>
@@ -785,7 +759,7 @@ GYRE_testing OCE TOP
 <p><strong>Note:</strong> Make sure the OCE/TOP/&hellip; flags match the reference configuration you are using</p>
 <hr>
 <p>You are now ready to <strong>compile nemo</strong>. Make sure you have all the modules in Step 1 loaded. Go back to the base directory and do the following</p>
-<pre><code class="language-shell">cd $DATADIR/NEMO/release-4.0.1
+<pre><code class="language-shell">cd $DATADIR/NEMO/nemo4.0-9925
 ./makenemo -j2 -r GYRE_testing -m linux_NEXCS
 </code></pre>
 <p>If all has gone well you have successfully compiled NEMO!</p>
@@ -797,15 +771,15 @@ GYRE_testing OCE TOP
 ./maketools -n REBUILD_NEMO -m linux_NEXCS
 </code></pre>
 <hr>
-<p><strong>Note:</strong> If you get an error about <code>iargc_</code> and/or <code>getarg</code> not being external variables then go to the following file <code>tools/REBUILD_NEMO/src/rebuild_nemo.F90</code> and comment out these two lines.</p>
+<p><strong>Note:</strong> If you get an error about <code>iargc_</code> and/or <code>getarg</code> not being external variables then go to the following file <code>tools/REBUILD_NEMO/src/rebuild_nemo.F90</code> and comment out these two lines</p>
 <pre><code class="language-shell">INTEGER, EXTERNAL :: iargc
  ...
  external :: getarg
 </code></pre>
-<p>Depending on the compiler used these may or may not be treated as external variables.</p>
+<p>These are not external variables in Fortran 90.</p>
 <hr>
 <p>Now go back to your configuration and create a symbolic link to <code>xios_server.exe</code></p>
-<pre><code class="language-shell">cd $DATADIR/NEMO/release-4.0.1/cfgs/GYRE_testing/EXP00
+<pre><code class="language-shell">cd $DATADIR/NEMO/nemo4.0-9925/cfgs/GYRE_testing/EXP00
 ln -s $DATADIR/XIOS/xios-2.5/bin/xios_server.exe .
 </code></pre>
 <p>Also modify <code>iodef.xml</code> and set <code>using_server</code> to <code>true</code></p>
@@ -832,7 +806,7 @@ ln -s $DATADIR/XIOS/xios-2.5/bin/xios_server.exe .
 #PBS -j oe
 #PBS -V
 
-cd $DATADIR/NEMO/release-4.0.1/cfgs/GYRE_testing/EXP00/
+cd $DATADIR/NEMO/nemo4.0-9925/cfgs/GYRE_testing/EXP00/
 
 echo &quot; _ __   ___ _ __ ___   ___         &quot;
 echo &quot;| '_ \ / _ \ '_ ' _ \ / _ \        &quot;
@@ -913,7 +887,7 @@ fi
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://afstyles.github.io/nemo-compilation/&amp;text=Compiling%20NEMO%204.0.1%20on%20Monsoon/NEXCS" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://afstyles.github.io/nemo-compilation-archive/&amp;text=Compiling%20NEMO%204.0%20on%20NEXCS" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -926,7 +900,7 @@ fi
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://afstyles.github.io/nemo-compilation/&amp;t=Compiling%20NEMO%204.0.1%20on%20Monsoon/NEXCS" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://afstyles.github.io/nemo-compilation-archive/&amp;t=Compiling%20NEMO%204.0%20on%20NEXCS" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -939,7 +913,7 @@ fi
       
       
       <li>
-        <a href="mailto:?subject=Compiling%20NEMO%204.0.1%20on%20Monsoon/NEXCS&amp;body=https://afstyles.github.io/nemo-compilation/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Compiling%20NEMO%204.0%20on%20NEXCS&amp;body=https://afstyles.github.io/nemo-compilation-archive/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -952,7 +926,7 @@ fi
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://afstyles.github.io/nemo-compilation/&amp;title=Compiling%20NEMO%204.0.1%20on%20Monsoon/NEXCS" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://afstyles.github.io/nemo-compilation-archive/&amp;title=Compiling%20NEMO%204.0%20on%20NEXCS" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -965,7 +939,7 @@ fi
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Compiling%20NEMO%204.0.1%20on%20Monsoon/NEXCS%20https://afstyles.github.io/nemo-compilation/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Compiling%20NEMO%204.0%20on%20NEXCS%20https://afstyles.github.io/nemo-compilation-archive/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -978,7 +952,7 @@ fi
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://afstyles.github.io/nemo-compilation/&amp;title=Compiling%20NEMO%204.0.1%20on%20Monsoon/NEXCS" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://afstyles.github.io/nemo-compilation-archive/&amp;title=Compiling%20NEMO%204.0%20on%20NEXCS" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
