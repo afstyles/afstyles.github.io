@@ -13,6 +13,17 @@
     </image>
     
     <item>
+      <title>Preprint of first paper</title>
+      <link>https://afstyles.github.io/post/preprint-post/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/preprint-post/</guid>
+      <description>&lt;p&gt;The preprint of my first paper is available on 
+&lt;a href=&#34;https://t.co/ly716WNqXD&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ESSOAr&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this article we discruss how the model grid can produce dominant spurious forces in both realistic and idealized model gyres.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Compiling NEMO 4.0.1 on Monsoon/NEXCS</title>
       <link>https://afstyles.github.io/nemo-compilation/</link>
       <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
