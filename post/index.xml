@@ -5,12 +5,24 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 21 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 02 Sep 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>See you at the Natural History Museum!</title>
+      <link>https://afstyles.github.io/post/omg-2022-presentation/</link>
+      <pubDate>Fri, 02 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/omg-2022-presentation/</guid>
+      <description>&lt;p&gt;I am very excited to be presenting in the 
+&lt;a href=&#34;https://www.challenger-society.org.uk/Ocean_Modelling&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Challenger Society Ocean Modelling annual meeting&lt;/a&gt; at the Natural History Museum in London.&lt;/p&gt;
+&lt;p&gt;I will be presenting my work on spurious forces in the afternoon session (9th September 13:30 - 15:30 GMT)&lt;/p&gt;
+&lt;p&gt;Despite my best efforts, I cannot guarantee that dinosaurs will be featured in my presentation!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>I will be presenting at EGU 2022</title>
