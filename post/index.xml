@@ -5,12 +5,26 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 09 Sep 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 02 Oct 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>Seminar at the University of Exeter</title>
+      <link>https://afstyles.github.io/post/exeter-seminar22/</link>
+      <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/exeter-seminar22/</guid>
+      <description>&lt;p&gt;This week I will be presenting a seminar for the Geophysical and Astrophysical Fluid Dynamics group at the University of Exeter.&lt;/p&gt;
+&lt;p&gt;The seminar will be an in-depth study of ocean gyres and their vorticity budget and is largely based on my 
+&lt;a href=&#34;https://doi.org/10.1029/2021MS002884&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;recently published paper&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you are in Exeter, head over to the Harrison building on the 4th October at 14:30 BST to catch the talk.&lt;/p&gt;
+&lt;p&gt;More details can be found 
+&lt;a href=&#34;https://mathematics.exeter.ac.uk/research/cgafd/seminars/event/?semID=2801&amp;amp;dateID=5770&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Best talk at Ocean Modelling SIG!</title>
