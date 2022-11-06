@@ -5,12 +5,26 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 02 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 06 Nov 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>Invited talk at the SO-CHIC joint projects meeting</title>
+      <link>https://afstyles.github.io/post/so-chic-announcement/</link>
+      <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/so-chic-announcement/</guid>
+      <description>&lt;p&gt;I have a very exciting week lined up ahead of me. The joint meetings for 
+&lt;a href=&#34;http://www.sochic-h2020.eu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SO-CHIC&lt;/a&gt; and 
+&lt;a href=&#34;https://www.europeanpolarboard.org/projects/oceanice/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OCEAN:ICE&lt;/a&gt; are taking place at Sorbonne University in Paris.&lt;/p&gt;
+&lt;p&gt;On Thursday, I will be sharing some results from my idealized model of the Weddell Gyre. I am currently writing an article for these new results and a preprint will be available soon so keep an eye out!&lt;/p&gt;
+&lt;p&gt;I will also be giving a poster presentation on my 
+&lt;a href=&#34;https://doi.org/10.1029/2021MS002884&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;recent publication&lt;/a&gt; about spurious forces.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Seminar at the University of Exeter</title>
