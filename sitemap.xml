@@ -3,6 +3,86 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://afstyles.github.io/publication-type/3/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/author/andrew-f.-styles/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/tag/antarctic-circumpolar-current/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/authors/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/author/david-p.-marshall/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/author/david-storkey/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/tag/idealized-modeling/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/tag/mesoscale-eddies/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/author/michael-j.-bell/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/publication_types/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/publication/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/tag/resolution/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/tag/sea-floor-interaction/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/tags/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/publication/iwg_sensitivity/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/tag/weddell-gyre/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://afstyles.github.io/post/agu-2022-presentation/</loc>
     <lastmod>2022-12-11T00:00:00+00:00</lastmod>
   </url>
@@ -39,41 +119,6 @@
   
   <url>
     <loc>https://afstyles.github.io/publication-type/2/</loc>
-    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afstyles.github.io/author/andrew-f.-styles/</loc>
-    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afstyles.github.io/authors/</loc>
-    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afstyles.github.io/author/david-p.-marshall/</loc>
-    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afstyles.github.io/author/david-storkey/</loc>
-    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afstyles.github.io/author/michael-j.-bell/</loc>
-    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afstyles.github.io/publication_types/</loc>
-    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afstyles.github.io/publication/</loc>
     <lastmod>2022-05-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -126,11 +171,11 @@
   </url>
   
   <url>
-    <loc>https://afstyles.github.io/talk/</loc>
+    <loc>https://afstyles.github.io/publications/</loc>
   </url>
   
   <url>
-    <loc>https://afstyles.github.io/tags/</loc>
+    <loc>https://afstyles.github.io/talk/</loc>
   </url>
   
 </urlset>
