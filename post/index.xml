@@ -5,12 +5,25 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 26 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 05 Oct 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>Idealized Weddell Gyre paper published!</title>
+      <link>https://afstyles.github.io/post/iwg-published/</link>
+      <pubDate>Thu, 05 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/iwg-published/</guid>
+      <description>&lt;p&gt;The second paper from my PhD has just been published in JGR: Oceans!&lt;/p&gt;
+&lt;p&gt;Use the link below to take a look!&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://doi.org/10.1029/2023JC019711&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.1029/2023JC019711&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this paper, we use an idealized model of the Weddell Gyre and find that it is extremely sensitive to horizontal resolution. In particular, the gyre transport is largest at eddy-permitting resolutions, where only the largest mesoscale eddies are resolved.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Visiting Southampton</title>
