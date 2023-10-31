@@ -5,12 +5,26 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 05 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>Finished my PhD!</title>
+      <link>https://afstyles.github.io/post/phdone/</link>
+      <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/phdone/</guid>
+      <description>&lt;p&gt;After four years I have finally finished my PhD at the University of Oxford. An enormous thanks to my two fantastic supervisors, 
+&lt;a href=&#34;https://www.marshallocean.net/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;David Marshall&lt;/a&gt; and 
+&lt;a href=&#34;https://www.metoffice.gov.uk/research/people/mike-bell&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mike Bell&lt;/a&gt;, for their guidance and support. I must also thank my two examiners, 
+&lt;a href=&#34;https://www.southampton.ac.uk/people/5x2hkq/professor-alberto-naveira-garabato#publications&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Alberto Naveira Garabato&lt;/a&gt; and 
+&lt;a href=&#34;https://www.physics.ox.ac.uk/our-people/wellsa&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andrew Wells&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I am taking some much-needed time off, but I will be starting a very unique research project very soon. Stay tuned for more details!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Idealized Weddell Gyre paper published!</title>

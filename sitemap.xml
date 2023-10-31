@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://afstyles.github.io/post/iwg-published/</loc>
-    <lastmod>2023-10-05T00:00:00+00:00</lastmod>
+    <loc>https://afstyles.github.io/post/phdone/</loc>
+    <lastmod>2023-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://afstyles.github.io/post/</loc>
+    <lastmod>2023-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/post/iwg-published/</loc>
     <lastmod>2023-10-05T00:00:00+00:00</lastmod>
   </url>
   
