@@ -3,12 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://afstyles.github.io/post/phdone/</loc>
-    <lastmod>2023-10-13T00:00:00+00:00</lastmod>
+    <loc>https://afstyles.github.io/</loc>
+    <lastmod>2023-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://afstyles.github.io/post/</loc>
+    <lastmod>2023-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/post/neutralnemo-prerelease/</loc>
+    <lastmod>2023-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/neutralnemo/</loc>
+    <lastmod>2023-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/post/oceanbounds-position/</loc>
+    <lastmod>2023-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://afstyles.github.io/post/phdone/</loc>
     <lastmod>2023-10-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -155,11 +175,6 @@
   <url>
     <loc>https://afstyles.github.io/post/preprint-post/</loc>
     <lastmod>2021-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://afstyles.github.io/</loc>
-    <lastmod>2020-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>

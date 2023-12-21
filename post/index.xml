@@ -5,12 +5,46 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>Pre-release of neutralNEMO</title>
+      <link>https://afstyles.github.io/post/neutralnemo-prerelease/</link>
+      <pubDate>Thu, 21 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/neutralnemo-prerelease/</guid>
+      <description>&lt;p&gt;About a year ago, I had an idea for a Python package but I couldn&amp;rsquo;t quite find the time (probably because I was writing a thesis). Either way, I am glad to finally share &lt;strong&gt;neutralNEMO&lt;/strong&gt; with the world.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;neutralNEMO&lt;/strong&gt; is a Python library which helps users calculate neutral surfaces from NEMO model outputs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;strong&gt;GitHub repository&lt;/strong&gt; can be found here: 
+&lt;a href=&#34;https://github.com/afstyles/neutralNEMO&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/afstyles/neutralNEMO&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Documentation&lt;/strong&gt; including installation instructions can be found here: 
+&lt;a href=&#34;https://neutralnemo.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://neutralnemo.readthedocs.io/en/latest/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Further details can also be found on the dedicated 
+&lt;a href=&#34;https://afstyles.github.io/neutralnemo/&#34;&gt;neutralNEMO page&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>New position at the British Antarctic Survey</title>
+      <link>https://afstyles.github.io/post/oceanbounds-position/</link>
+      <pubDate>Thu, 14 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/oceanbounds-position/</guid>
+      <description>&lt;p&gt;After enjoying a bit of 
+&lt;a href=&#34;https://afstyles.github.io/post/phdone/&#34;&gt;post-PhD&lt;/a&gt; relaxation, I have now started as a Physical Oceanographer at the British Antarctic Survey.&lt;/p&gt;
+&lt;p&gt;I am leading the adjoint component of &lt;em&gt;OceanBound&lt;/em&gt;, an ambitious project to study the role of ocean boundary pressures in the global ocean. As an adjoint modeller, I will be using the ECCO state estimate to determine which external forces the boundary pressures are most sensitive to.&lt;/p&gt;
+&lt;p&gt;The British Antarctic Survey has been a welcoming place to work where everyone is perhaps a little bit too obsessed (if that&amp;rsquo;s possible) with Antarctica. I am also enjoying a close collaboration with the University of Liverpool as part of the OceanBound project.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Finished my PhD!</title>
