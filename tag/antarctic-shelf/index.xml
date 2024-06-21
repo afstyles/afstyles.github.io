@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Antarctic Shelf | Andrew Styles</title>
+    <link>https://afstyles.github.io/tag/antarctic-shelf/</link>
+      <atom:link href="https://afstyles.github.io/tag/antarctic-shelf/index.xml" rel="self" type="application/rss+xml" />
+    <description>Antarctic Shelf</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 12 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
+      <title>Antarctic Shelf</title>
+      <link>https://afstyles.github.io/tag/antarctic-shelf/</link>
+    </image>
+    
+    <item>
+      <title>Spatial and Temporal Patterns of Southern Ocean Ventilation</title>
+      <link>https://afstyles.github.io/publication/sdem/</link>
+      <pubDate>Mon, 12 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/publication/sdem/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

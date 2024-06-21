@@ -5,12 +5,20 @@
     <link>https://afstyles.github.io/tag/weddell-gyre/</link>
       <atom:link href="https://afstyles.github.io/tag/weddell-gyre/index.xml" rel="self" type="application/rss+xml" />
     <description>Weddell Gyre</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 23 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 12 Feb 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Weddell Gyre</title>
       <link>https://afstyles.github.io/tag/weddell-gyre/</link>
     </image>
+    
+    <item>
+      <title>Spatial and Temporal Patterns of Southern Ocean Ventilation</title>
+      <link>https://afstyles.github.io/publication/sdem/</link>
+      <pubDate>Mon, 12 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/publication/sdem/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>The Sensitivity of an Idealized Weddell Gyre to Horizontal Resolution</title>
