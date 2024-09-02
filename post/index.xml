@@ -5,12 +5,27 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 10 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 02 Sep 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>Challenger Society Conference 2024</title>
+      <link>https://afstyles.github.io/post/challenger24/</link>
+      <pubDate>Mon, 02 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/challenger24/</guid>
+      <description>&lt;p&gt;This year I will be attending the Challenger Society Conference in Oban.&lt;/p&gt;
+&lt;p&gt;After enjoying some hiking in sunny Scotland, I feel refreshed and ready to go to my first Challenger conference!&lt;/p&gt;
+&lt;p&gt;I will be sharing some exciting results from the OceanBound project on &lt;strong&gt;Tuesday 3rd September at 15:30 (BST)&lt;/strong&gt;. Boundary pressures can shape global ocean circulation and by using an adjoint model we can discover what sets the variability of boundary pressure patterns.&lt;/p&gt;
+&lt;p&gt;You can find a link to the talk 
+&lt;a href=&#34;https://challenger2024.exordo.com/programme/presentation/356&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can find a copy of my slides 
+&lt;a href=&#34;presentation.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>SOFLUX webinar coming up</title>
