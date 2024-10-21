@@ -5,12 +5,26 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 02 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 21 Oct 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>TACOMA meeting 2024</title>
+      <link>https://afstyles.github.io/post/tacoma24/</link>
+      <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/tacoma24/</guid>
+      <description>&lt;p&gt;On &lt;strong&gt;Monday 21st October&lt;/strong&gt;, the British Antarctic Survey will be hosting the virtual 2024 TACOMA meeting (&lt;em&gt;Techniques and Challenges in Ocean-Ice Modeeling [Adjoint]&lt;/em&gt;). The meeting will run from 14:00-17:00 BST.&lt;/p&gt;
+&lt;p&gt;The meeting is perfect for anyone who is curious about adjoint modelling or wants to stay up to date with the latest developments in the adjoint modelling scene. The meeting includes a mix of short talks, seminars, and discussions.&lt;/p&gt;
+&lt;p&gt;I will be giving a short talk at 14:15 BST and you can find a copy of my slides 
+&lt;a href=&#34;presentation.pdf&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a link to come see the meeting 
+&lt;a href=&#34;https://bas-ac-uk.zoom.us/j/93764616443&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://bas-ac-uk.zoom.us/j/93764616443&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Challenger Society Conference 2024</title>
