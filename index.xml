@@ -387,7 +387,9 @@
 &lt;a href=&#34;https://doi.org/10.1029/2020MS002436&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stanley et al., 2021&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;The package contains routines to correctly load temperature and salinity date alongside the necessary horizontal and vertical grid information. There is also a streamlined routine for calculating an approximately neutral density surface (an omega surface) which is fixed to a specific location in time and space. Additional options to calculate the Veronis density and potential density surfaces are included.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; neutralNEMO is currently in &lt;strong&gt;pre-release&lt;/strong&gt; and at an early stage of development. I am keen to hear how others get on with the library when they use it on their model data. If you encounter any issues please let me know or raise an issue on GitHub, I will be happy to help!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; NeutralNEMO is under active development.&lt;/p&gt;
+&lt;p&gt;I am keen to here how others get on with the library when they use it on their model runs.&lt;/p&gt;
+&lt;p&gt;If it works well for you, please spread the word and let me know as it will make my day! If you do encounter any problems, please contact me or raise an issue on GitHub, I will try to help in any way I can.&lt;/p&gt;
 &lt;hr&gt;
 </description>
     </item>
