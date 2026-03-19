@@ -5,12 +5,23 @@
     <link>https://afstyles.github.io/post/</link>
       <atom:link href="https://afstyles.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 19 Mar 2026 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://afstyles.github.io/images/icon_hua756ceacc3badbf30659945b1cbb63aa_2087_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://afstyles.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>SNAP Seminar on 23rd March</title>
+      <link>https://afstyles.github.io/post/snap-seminar-2026/</link>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://afstyles.github.io/post/snap-seminar-2026/</guid>
+      <description>&lt;p&gt;On &lt;strong&gt;Monday 23rd March at 16:00 GMT&lt;/strong&gt;, I will be giving a virtual seminar as part of the SNAP seminar series. The seminar will be an in-depth investigation of the atmospheric drivers of basin-wide geostrophic transport in the Atlantic using OceanBound&amp;rsquo;s adjoint modelling framework.&lt;/p&gt;
+&lt;p&gt;The presented work is from my recently submitted paper on the sensitivities of basin-wide geostrophic transport in the Atlantic (link 
+&lt;a href=&#34;https://eppro02.ativ.me/appinfo.php?page=Session&amp;amp;project=OSM26&amp;amp;id=p2015152-212291&amp;amp;server=eppro02.ativ.me&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Preprint available - &#39;Atmospheric drivers of basin-wide geostrophic transport in the Atlantic&#39;</title>
